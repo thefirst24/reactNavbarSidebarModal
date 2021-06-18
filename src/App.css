@@ -1,38 +1,286 @@
-.App {
-  text-align: center;
+body , html {
+  background: #F1F5F8;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root , h1 {
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+header {
+  background: #ffffff;
+  box-shadow: 0 -2px 10px 5px rgba(0,0,0,0.1);
+  margin: 0;
+  height: 70px;
+  position: relative;
+}
+
+img {
+  transform: scale(0.85);
+}
+
+.nav {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  margin: 0 10px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  box-sizing:border-box;
+  justify-content: space-between;
+  max-width: 1170px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  overflow: hidden;
+  
+}
+
+.links {
+  height: auto;
+  transition: all 0.5s;
+  background: #fff;
+}
+
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: white;
+  width: 90vw;
+  height: 300px;
+  border-radius: 5px;
+  place-items: center;
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+}
+
+
+
+.nav-toggle {
+  background: transparent;
+  border: none;
+  color: rgba(0,0,255,0.5);
+  transform: scale(2);
+  cursor: pointer;
+  display: none;
+  transition: all 0.5s;
+}
+
+@media screen and (max-width: 800px) {
+
+
+  .socials {
+    display: none;
+  }
+
+  .links {
+    height: 0px;
+    position: absolute;
+    top:75%;
+    width: 100%;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    z-index: 5;
+  }
+
+  .links li{
+    padding: 5px 0px;
+    margin: 0px;
+    transition: all 0.5s;
+    height: 40px;
+  }
+
+  .links li a {
+    margin-left: 20px;
+    transition: all 0.5s;
+  }
+
+  .links li:last-child {
+    padding: 5px 0 0 0;
+  }
+
+  .links li:hover {
+    background: lightblue;
+  }
+
+  .links li:hover a {
+    margin-left: 30px;
+  }
+
+
+  .nav-toggle {
+    display: block;
+    margin-right: 15px;
+    
+  }
+
+  .nav-toggle:after {
+    content:"";
+    position:absolute;
+    width:100%;
+    bottom:1px;
+    box-shadow: 0 -2px 10px 5px rgba(0,0,0,0.1);
+}
+}
+
+
+
+.show-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: none;
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font: 400 13px Arial;
+  cursor: pointer;
+  transition: all 0.5s;
+  border: 2px solid black;
+}
+
+.show-modal:hover {
+  background: white;
+  color: black;
+}
+
+.modal-bg {
+  background: rgba(0,0,0,0.5);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+@media screen and (min-width: 800px) {
+  .links {
+    height: auto !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-toggle:hover {
+  color: black;
+  transform: rotateZ(90deg) scale(2);
+}
+
+.close-modal-btn {
+  position: absolute;
+  left: calc(100% - 30px);
+  top: 15px;
+  background: transparent;
+  border: none;
+  transform: scale(1.5);
+  color: darkred;
+  cursor: pointer;
+}
+
+aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  height: 100vh;
+  width: 300px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  transition: all 0.5s;
+  transform: translateX(-100%);
+}
+
+aside button {
+  background: transparent;
+  border: none;
+  transform: scale(2);
+  color: darkred;
+  cursor: pointer;
+}
+
+.aside-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.aside-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
+.aside-menu li {
+  margin: 0;
+  padding: 0;
+  transition: all 0.5s;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.aside-menu li a {
+  padding: 0px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  display: block;
+  padding: 0.6em;
+  width: 100%;
+}
+
+.aside-menu li a svg {
+  margin-top: 1px;
+  transform: scale(1.1);
+}
+
+.aside-menu li:hover {
+  background: rgba(103, 103, 238, 0.3);
+}
+
+@keyframes btn {
   from {
-    transform: rotate(0deg);
+    transform: scale(2);
   }
   to {
-    transform: rotate(360deg);
+    transform: scale(3);
   }
 }
+
+.show-aside {
+  background: transparent;
+  border:none;
+  transform: scale(2);
+  margin: 30px;
+  cursor: pointer;
+  animation: 1s linear 0s infinite alternate btn;
+  z-index: -5;
+}
+
+svg {
+  z-index: -5;
+}
+
+
+

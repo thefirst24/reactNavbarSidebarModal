@@ -1,24 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './Navbar';
+import Modal from './Modal';
+import { useState } from "react";
+import Sidebar from './Sidebar'
 
 function App() {
+  const [isModalOpen,setIsModalOpen] = useState(false);
+  const [asideIsOpen,setAsideIsOpen] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <button className="show-modal" onClick={() => setIsModalOpen(!isModalOpen)}>SHOW MODAL</button>
+      <button className="show-aside" onClick={() => setAsideIsOpen(true)}><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg></button>
+      {isModalOpen && <Modal closeModal={setIsModalOpen}/>}
+      <Sidebar closeAside={setAsideIsOpen} isOpen={asideIsOpen}/>
+    </>
   );
 }
 
